@@ -1,0 +1,17 @@
+# fichier de configuration principal de votre configuration Prisma
+
+# Le point de terminaison HTTP de votre API Prisma
+#endpoint: ""
+endpoint: https://eu1.prisma.sh/yohann-loic-ravino-51f9e2/hackernews-node/dev
+
+# Pointe vers le fichier de modèle de données qui constitue la base de l’API client Prisma que vous utiliserez dans votre serveur d’API
+datamodel: datamodel.prisma
+
+# Spécifie dans quelle langue le client Prisma doit être généré et où il sera situé
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
+
+hooks:
+  post-deploy:
+    - prisma generate
