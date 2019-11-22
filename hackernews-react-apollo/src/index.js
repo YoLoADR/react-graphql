@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+//encapsuler leApp avec BrowserRouter afin que tous les composants enfants de Appaient accès à la fonctionnalité de routage.
+import { BrowserRouter } from "react-router-dom";
 import "./styles/index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
@@ -20,9 +22,11 @@ const client = new ApolloClient({
 
 // vous rendez le composant racine de votre application React. Le Appest encapsulé avec le composant d'ordre supérieur ApolloProviderqui est transmis clientcomme accessoire.
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
 

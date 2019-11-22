@@ -40,7 +40,12 @@ class CreateLink extends Component {
           />
         </div>
 
-        <Mutation mutation={POST_MUTATION} variables={{ description, url }}>
+        <Mutation
+          mutation={POST_MUTATION}
+          variables={{ description, url }}
+          //(1)
+          onCompleted={() => this.props.history.push("/")}
+        >
           {postMutation => <button onClick={postMutation}>Submit</button>}
         </Mutation>
       </div>
@@ -49,3 +54,5 @@ class CreateLink extends Component {
 }
 
 export default CreateLink;
+
+// (1) Pour résumer cette section, vous devez implémenter une redirection automatique duCreateLink composant vers le LinkListcomposant après une mutation.bibliothèque
