@@ -1,3 +1,4 @@
+scalar DateTime
 # schema.graphql contient votre schéma d'application . Le schéma d'application définit les opérations GraphQL que vous pouvez envoyer depuis le frontend. Nous allons examiner de plus près ce fichier dans un instant.
 # Parmi les fichiers mentionnés, seul le schéma d'application défini dans server/src/schema.graphqlest pertinent pour vous en tant que développeur frontend. Ce fichier contient le schéma GraphQL qui définit toutes les opérations (requêtes, mutations et abonnements) que vous pouvez envoyer à partir de votre application frontale.
 
@@ -23,11 +24,12 @@ type Mutation {
   post(url: String!, description: String!): Link!
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
-  vote(linkId: ID!): Vote
+  vote(linkId: ID!): Vote!
 }
 
 type Link {
   id: ID!
+  createdAt: DateTime!
   description: String!
   url: String!
   postedBy: User
