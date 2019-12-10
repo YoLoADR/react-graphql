@@ -44,11 +44,14 @@ export const FEED_QUERY = gql`
 
 class LinkList extends Component {
   _updateCacheAfterVote = (store, createVote, linkId) => {
+    // (1) You start by reading the current state of the cached data for the FEED_QUERY from the store.
     const data = store.readQuery({ query: FEED_QUERY });
 
+    //(2) Now you’re retrieving the link that the user just voted for from that list. You’re also manipulating that link by resetting its votes to the votes that were just returned by the server.
     const votedLink = data.feed.links.find(link => link.id === linkId);
     votedLink.votes = createVote.link.votes;
 
+    // (3) Finally, you take the modified data and write it back into the store.
     store.writeQuery({ query: FEED_QUERY, data });
   };
 

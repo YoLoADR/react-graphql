@@ -28,21 +28,15 @@ class Link extends Component {
     const authToken = localStorage.getItem(AUTH_TOKEN);
     return (
       <div className="flex mt2 item-start">
-        <div className="flew items-center">
-          <span className="gray">{this.props.index + 1}</span>
-          {/* (1) */}
+        <div className="flex items-center">
+          <span className="gray">{this.props.index + 1}.</span>
           {authToken && (
             <Mutation
               mutation={VOTE_MUTATION}
               variables={{ linkId: this.props.link.id }}
-              // (4)
-              update={(store, { data: { vote } }) => {
-                this.props.updateStoreAfterVote(
-                  store,
-                  vote,
-                  this.props.link.id
-                );
-              }}
+              update={(store, { data: { vote } }) =>
+                this.props.updateStoreAfterVote(store, vote, this.props.link.id)
+              }
             >
               {voteMutation => (
                 <div className="ml1 gray f11" onClick={voteMutation}>
@@ -57,11 +51,10 @@ class Link extends Component {
             {this.props.link.description} ({this.props.link.url})
           </div>
           <div className="f6 lh-copy gray">
-            {this.props.link.votes.length} votes | by {""}
+            {this.props.link.votes.length} votes | by{" "}
             {this.props.link.postedBy
               ? this.props.link.postedBy.name
-              : "Unknow"}{" "}
-            {/* (2) */}
+              : "Unknown"}{" "}
             {timeDifferenceForDate(this.props.link.createdAt)}
           </div>
         </div>
