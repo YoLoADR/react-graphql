@@ -3,7 +3,11 @@ module.exports = {
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-/* GraphQL */ `type AggregateLink {
+/* GraphQL */ `type AggregateBooking {
+  count: Int!
+}
+
+type AggregateLink {
   count: Int!
 }
 
@@ -17,6 +21,535 @@ type AggregateVote {
 
 type BatchPayload {
   count: Long!
+}
+
+type Booking {
+  id: ID!
+  tripdate: String
+  trip_start_time: String
+  trip_end_time: String
+  customer_name: String
+  carType: String
+  vehicle_number: String
+  driver_number: String
+  passenger_number: String
+  kilometer_number: String
+  hour_number: String
+  day_number: String
+  pickupAddress: String
+  pickupCity: String
+  dropAddress: String
+  dropCity: String
+  driver_name: String
+  status: String
+  trip_cost: String
+  discount: String
+  payment_status: String
+  createdAt: DateTime!
+  comment: String
+}
+
+type BookingConnection {
+  pageInfo: PageInfo!
+  edges: [BookingEdge]!
+  aggregate: AggregateBooking!
+}
+
+input BookingCreateInput {
+  id: ID
+  tripdate: String
+  trip_start_time: String
+  trip_end_time: String
+  customer_name: String
+  carType: String
+  vehicle_number: String
+  driver_number: String
+  passenger_number: String
+  kilometer_number: String
+  hour_number: String
+  day_number: String
+  pickupAddress: String
+  pickupCity: String
+  dropAddress: String
+  dropCity: String
+  driver_name: String
+  status: String
+  trip_cost: String
+  discount: String
+  payment_status: String
+  comment: String
+}
+
+type BookingEdge {
+  node: Booking!
+  cursor: String!
+}
+
+enum BookingOrderByInput {
+  id_ASC
+  id_DESC
+  tripdate_ASC
+  tripdate_DESC
+  trip_start_time_ASC
+  trip_start_time_DESC
+  trip_end_time_ASC
+  trip_end_time_DESC
+  customer_name_ASC
+  customer_name_DESC
+  carType_ASC
+  carType_DESC
+  vehicle_number_ASC
+  vehicle_number_DESC
+  driver_number_ASC
+  driver_number_DESC
+  passenger_number_ASC
+  passenger_number_DESC
+  kilometer_number_ASC
+  kilometer_number_DESC
+  hour_number_ASC
+  hour_number_DESC
+  day_number_ASC
+  day_number_DESC
+  pickupAddress_ASC
+  pickupAddress_DESC
+  pickupCity_ASC
+  pickupCity_DESC
+  dropAddress_ASC
+  dropAddress_DESC
+  dropCity_ASC
+  dropCity_DESC
+  driver_name_ASC
+  driver_name_DESC
+  status_ASC
+  status_DESC
+  trip_cost_ASC
+  trip_cost_DESC
+  discount_ASC
+  discount_DESC
+  payment_status_ASC
+  payment_status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  comment_ASC
+  comment_DESC
+}
+
+type BookingPreviousValues {
+  id: ID!
+  tripdate: String
+  trip_start_time: String
+  trip_end_time: String
+  customer_name: String
+  carType: String
+  vehicle_number: String
+  driver_number: String
+  passenger_number: String
+  kilometer_number: String
+  hour_number: String
+  day_number: String
+  pickupAddress: String
+  pickupCity: String
+  dropAddress: String
+  dropCity: String
+  driver_name: String
+  status: String
+  trip_cost: String
+  discount: String
+  payment_status: String
+  createdAt: DateTime!
+  comment: String
+}
+
+type BookingSubscriptionPayload {
+  mutation: MutationType!
+  node: Booking
+  updatedFields: [String!]
+  previousValues: BookingPreviousValues
+}
+
+input BookingSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BookingWhereInput
+  AND: [BookingSubscriptionWhereInput!]
+  OR: [BookingSubscriptionWhereInput!]
+  NOT: [BookingSubscriptionWhereInput!]
+}
+
+input BookingUpdateInput {
+  tripdate: String
+  trip_start_time: String
+  trip_end_time: String
+  customer_name: String
+  carType: String
+  vehicle_number: String
+  driver_number: String
+  passenger_number: String
+  kilometer_number: String
+  hour_number: String
+  day_number: String
+  pickupAddress: String
+  pickupCity: String
+  dropAddress: String
+  dropCity: String
+  driver_name: String
+  status: String
+  trip_cost: String
+  discount: String
+  payment_status: String
+  comment: String
+}
+
+input BookingUpdateManyMutationInput {
+  tripdate: String
+  trip_start_time: String
+  trip_end_time: String
+  customer_name: String
+  carType: String
+  vehicle_number: String
+  driver_number: String
+  passenger_number: String
+  kilometer_number: String
+  hour_number: String
+  day_number: String
+  pickupAddress: String
+  pickupCity: String
+  dropAddress: String
+  dropCity: String
+  driver_name: String
+  status: String
+  trip_cost: String
+  discount: String
+  payment_status: String
+  comment: String
+}
+
+input BookingWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  tripdate: String
+  tripdate_not: String
+  tripdate_in: [String!]
+  tripdate_not_in: [String!]
+  tripdate_lt: String
+  tripdate_lte: String
+  tripdate_gt: String
+  tripdate_gte: String
+  tripdate_contains: String
+  tripdate_not_contains: String
+  tripdate_starts_with: String
+  tripdate_not_starts_with: String
+  tripdate_ends_with: String
+  tripdate_not_ends_with: String
+  trip_start_time: String
+  trip_start_time_not: String
+  trip_start_time_in: [String!]
+  trip_start_time_not_in: [String!]
+  trip_start_time_lt: String
+  trip_start_time_lte: String
+  trip_start_time_gt: String
+  trip_start_time_gte: String
+  trip_start_time_contains: String
+  trip_start_time_not_contains: String
+  trip_start_time_starts_with: String
+  trip_start_time_not_starts_with: String
+  trip_start_time_ends_with: String
+  trip_start_time_not_ends_with: String
+  trip_end_time: String
+  trip_end_time_not: String
+  trip_end_time_in: [String!]
+  trip_end_time_not_in: [String!]
+  trip_end_time_lt: String
+  trip_end_time_lte: String
+  trip_end_time_gt: String
+  trip_end_time_gte: String
+  trip_end_time_contains: String
+  trip_end_time_not_contains: String
+  trip_end_time_starts_with: String
+  trip_end_time_not_starts_with: String
+  trip_end_time_ends_with: String
+  trip_end_time_not_ends_with: String
+  customer_name: String
+  customer_name_not: String
+  customer_name_in: [String!]
+  customer_name_not_in: [String!]
+  customer_name_lt: String
+  customer_name_lte: String
+  customer_name_gt: String
+  customer_name_gte: String
+  customer_name_contains: String
+  customer_name_not_contains: String
+  customer_name_starts_with: String
+  customer_name_not_starts_with: String
+  customer_name_ends_with: String
+  customer_name_not_ends_with: String
+  carType: String
+  carType_not: String
+  carType_in: [String!]
+  carType_not_in: [String!]
+  carType_lt: String
+  carType_lte: String
+  carType_gt: String
+  carType_gte: String
+  carType_contains: String
+  carType_not_contains: String
+  carType_starts_with: String
+  carType_not_starts_with: String
+  carType_ends_with: String
+  carType_not_ends_with: String
+  vehicle_number: String
+  vehicle_number_not: String
+  vehicle_number_in: [String!]
+  vehicle_number_not_in: [String!]
+  vehicle_number_lt: String
+  vehicle_number_lte: String
+  vehicle_number_gt: String
+  vehicle_number_gte: String
+  vehicle_number_contains: String
+  vehicle_number_not_contains: String
+  vehicle_number_starts_with: String
+  vehicle_number_not_starts_with: String
+  vehicle_number_ends_with: String
+  vehicle_number_not_ends_with: String
+  driver_number: String
+  driver_number_not: String
+  driver_number_in: [String!]
+  driver_number_not_in: [String!]
+  driver_number_lt: String
+  driver_number_lte: String
+  driver_number_gt: String
+  driver_number_gte: String
+  driver_number_contains: String
+  driver_number_not_contains: String
+  driver_number_starts_with: String
+  driver_number_not_starts_with: String
+  driver_number_ends_with: String
+  driver_number_not_ends_with: String
+  passenger_number: String
+  passenger_number_not: String
+  passenger_number_in: [String!]
+  passenger_number_not_in: [String!]
+  passenger_number_lt: String
+  passenger_number_lte: String
+  passenger_number_gt: String
+  passenger_number_gte: String
+  passenger_number_contains: String
+  passenger_number_not_contains: String
+  passenger_number_starts_with: String
+  passenger_number_not_starts_with: String
+  passenger_number_ends_with: String
+  passenger_number_not_ends_with: String
+  kilometer_number: String
+  kilometer_number_not: String
+  kilometer_number_in: [String!]
+  kilometer_number_not_in: [String!]
+  kilometer_number_lt: String
+  kilometer_number_lte: String
+  kilometer_number_gt: String
+  kilometer_number_gte: String
+  kilometer_number_contains: String
+  kilometer_number_not_contains: String
+  kilometer_number_starts_with: String
+  kilometer_number_not_starts_with: String
+  kilometer_number_ends_with: String
+  kilometer_number_not_ends_with: String
+  hour_number: String
+  hour_number_not: String
+  hour_number_in: [String!]
+  hour_number_not_in: [String!]
+  hour_number_lt: String
+  hour_number_lte: String
+  hour_number_gt: String
+  hour_number_gte: String
+  hour_number_contains: String
+  hour_number_not_contains: String
+  hour_number_starts_with: String
+  hour_number_not_starts_with: String
+  hour_number_ends_with: String
+  hour_number_not_ends_with: String
+  day_number: String
+  day_number_not: String
+  day_number_in: [String!]
+  day_number_not_in: [String!]
+  day_number_lt: String
+  day_number_lte: String
+  day_number_gt: String
+  day_number_gte: String
+  day_number_contains: String
+  day_number_not_contains: String
+  day_number_starts_with: String
+  day_number_not_starts_with: String
+  day_number_ends_with: String
+  day_number_not_ends_with: String
+  pickupAddress: String
+  pickupAddress_not: String
+  pickupAddress_in: [String!]
+  pickupAddress_not_in: [String!]
+  pickupAddress_lt: String
+  pickupAddress_lte: String
+  pickupAddress_gt: String
+  pickupAddress_gte: String
+  pickupAddress_contains: String
+  pickupAddress_not_contains: String
+  pickupAddress_starts_with: String
+  pickupAddress_not_starts_with: String
+  pickupAddress_ends_with: String
+  pickupAddress_not_ends_with: String
+  pickupCity: String
+  pickupCity_not: String
+  pickupCity_in: [String!]
+  pickupCity_not_in: [String!]
+  pickupCity_lt: String
+  pickupCity_lte: String
+  pickupCity_gt: String
+  pickupCity_gte: String
+  pickupCity_contains: String
+  pickupCity_not_contains: String
+  pickupCity_starts_with: String
+  pickupCity_not_starts_with: String
+  pickupCity_ends_with: String
+  pickupCity_not_ends_with: String
+  dropAddress: String
+  dropAddress_not: String
+  dropAddress_in: [String!]
+  dropAddress_not_in: [String!]
+  dropAddress_lt: String
+  dropAddress_lte: String
+  dropAddress_gt: String
+  dropAddress_gte: String
+  dropAddress_contains: String
+  dropAddress_not_contains: String
+  dropAddress_starts_with: String
+  dropAddress_not_starts_with: String
+  dropAddress_ends_with: String
+  dropAddress_not_ends_with: String
+  dropCity: String
+  dropCity_not: String
+  dropCity_in: [String!]
+  dropCity_not_in: [String!]
+  dropCity_lt: String
+  dropCity_lte: String
+  dropCity_gt: String
+  dropCity_gte: String
+  dropCity_contains: String
+  dropCity_not_contains: String
+  dropCity_starts_with: String
+  dropCity_not_starts_with: String
+  dropCity_ends_with: String
+  dropCity_not_ends_with: String
+  driver_name: String
+  driver_name_not: String
+  driver_name_in: [String!]
+  driver_name_not_in: [String!]
+  driver_name_lt: String
+  driver_name_lte: String
+  driver_name_gt: String
+  driver_name_gte: String
+  driver_name_contains: String
+  driver_name_not_contains: String
+  driver_name_starts_with: String
+  driver_name_not_starts_with: String
+  driver_name_ends_with: String
+  driver_name_not_ends_with: String
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  trip_cost: String
+  trip_cost_not: String
+  trip_cost_in: [String!]
+  trip_cost_not_in: [String!]
+  trip_cost_lt: String
+  trip_cost_lte: String
+  trip_cost_gt: String
+  trip_cost_gte: String
+  trip_cost_contains: String
+  trip_cost_not_contains: String
+  trip_cost_starts_with: String
+  trip_cost_not_starts_with: String
+  trip_cost_ends_with: String
+  trip_cost_not_ends_with: String
+  discount: String
+  discount_not: String
+  discount_in: [String!]
+  discount_not_in: [String!]
+  discount_lt: String
+  discount_lte: String
+  discount_gt: String
+  discount_gte: String
+  discount_contains: String
+  discount_not_contains: String
+  discount_starts_with: String
+  discount_not_starts_with: String
+  discount_ends_with: String
+  discount_not_ends_with: String
+  payment_status: String
+  payment_status_not: String
+  payment_status_in: [String!]
+  payment_status_not_in: [String!]
+  payment_status_lt: String
+  payment_status_lte: String
+  payment_status_gt: String
+  payment_status_gte: String
+  payment_status_contains: String
+  payment_status_not_contains: String
+  payment_status_starts_with: String
+  payment_status_not_starts_with: String
+  payment_status_ends_with: String
+  payment_status_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  comment: String
+  comment_not: String
+  comment_in: [String!]
+  comment_not_in: [String!]
+  comment_lt: String
+  comment_lte: String
+  comment_gt: String
+  comment_gte: String
+  comment_contains: String
+  comment_not_contains: String
+  comment_starts_with: String
+  comment_not_starts_with: String
+  comment_ends_with: String
+  comment_not_ends_with: String
+  AND: [BookingWhereInput!]
+  OR: [BookingWhereInput!]
+  NOT: [BookingWhereInput!]
+}
+
+input BookingWhereUniqueInput {
+  id: ID
 }
 
 scalar DateTime
@@ -301,6 +834,12 @@ input LinkWhereUniqueInput {
 scalar Long
 
 type Mutation {
+  createBooking(data: BookingCreateInput!): Booking!
+  updateBooking(data: BookingUpdateInput!, where: BookingWhereUniqueInput!): Booking
+  updateManyBookings(data: BookingUpdateManyMutationInput!, where: BookingWhereInput): BatchPayload!
+  upsertBooking(where: BookingWhereUniqueInput!, create: BookingCreateInput!, update: BookingUpdateInput!): Booking!
+  deleteBooking(where: BookingWhereUniqueInput!): Booking
+  deleteManyBookings(where: BookingWhereInput): BatchPayload!
   createLink(data: LinkCreateInput!): Link!
   updateLink(data: LinkUpdateInput!, where: LinkWhereUniqueInput!): Link
   updateManyLinks(data: LinkUpdateManyMutationInput!, where: LinkWhereInput): BatchPayload!
@@ -338,6 +877,9 @@ type PageInfo {
 }
 
 type Query {
+  booking(where: BookingWhereUniqueInput!): Booking
+  bookings(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Booking]!
+  bookingsConnection(where: BookingWhereInput, orderBy: BookingOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BookingConnection!
   link(where: LinkWhereUniqueInput!): Link
   links(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Link]!
   linksConnection(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LinkConnection!
@@ -351,6 +893,7 @@ type Query {
 }
 
 type Subscription {
+  booking(where: BookingSubscriptionWhereInput): BookingSubscriptionPayload
   link(where: LinkSubscriptionWhereInput): LinkSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   vote(where: VoteSubscriptionWhereInput): VoteSubscriptionPayload

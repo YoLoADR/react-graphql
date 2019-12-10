@@ -55,7 +55,7 @@ async function vote(parent, args, context, info) {
     throw new Error(`Already voted for link: ${args.linkId}`);
   }
 
-  // 3 Si existsrenvoie false, la createVoteméthode sera utilisée pour créer un nouveau Votequi est connecté à Useret Link.
+  // 3 Si exists renvoie false, la createVoteméthode sera utilisée pour créer un nouveau Votequi est connecté à Useret Link.
   return context.prisma.createVote({
     user: { connect: { id: userId } },
     link: { connect: { id: args.linkId } }
@@ -71,9 +71,54 @@ function post(parent, args, context, info) {
   });
 }
 
+function postBooking(parent, args, context, info) {
+  const userId = getUserId(context);
+  return context.prisma.createBooking({
+    carType: args.carType,
+    customer_name: args.customer_name
+  });
+}
+
+function updateBooking(parent, args, context, info) {
+  return context.prisma.updateBooking({
+    where: { id: args.id },
+
+    data: {
+      tripdate: args.tripdate,
+      trip_start_time: args.trip_start_time,
+      trip_end_time: args.trip_end_time,
+      customer_name: args.customer_name,
+      carType: args.carType,
+      vehicle_number: args.vehicle_number,
+      driver_number: args.driver_number,
+      passenger_number: args.passenger_number,
+      kilometer_number: args.kilometer_number,
+      hour_number: args.hour_number,
+      day_number: args.day_number,
+      pickupAddress: args.pickupAddress,
+      pickupCity: args.pickupCity,
+      dropAddress: args.dropAddress,
+      dropCity: args.dropCity,
+      driver_name: args.driver_name,
+      status: args.status,
+      discount: args.discount,
+      payment_status: args.payment_status,
+      createdAt: args.createdAt,
+      comment: args.comment
+    }
+  });
+}
+
+function deleteBooking(parent, args, context, info) {
+  return context.prisma.deleteBooking({ id: args.id });
+}
+
 module.exports = {
   signup,
   login,
   post,
-  vote
+  vote,
+  postBooking,
+  updateBooking,
+  deleteBooking
 };

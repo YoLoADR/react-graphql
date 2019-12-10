@@ -8,11 +8,22 @@ scalar DateTime
 type Query {
   info: String!
   feed(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): Feed!
+  getBookings(
+    filter: String
+    skip: Int
+    first: Int
+    orderBy: BookingOrderByInput
+  ): FeedBooking!
 }
 
 # Récupère tous les liens du backend, notez que cette requête autorise également les arguments de filtrage, de tri et de pagination
 type Feed {
   links: [Link!]!
+  count: Int!
+}
+
+type FeedBooking {
+  bookings: [Booking!]!
   count: Int!
 }
 
@@ -25,6 +36,33 @@ type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
   vote(linkId: ID!): Vote!
+  postBooking(carType: String, customer_name: String): Booking
+  updateBooking(
+    id: ID!
+    tripdate: String
+    trip_start_time: String
+    trip_end_time: String
+    customer_name: String
+    carType: String
+    vehicle_number: String
+    driver_number: String
+    passenger_number: String
+    kilometer_number: String
+    hour_number: String
+    day_number: String
+    pickupAddress: String
+    pickupCity: String
+    dropAddress: String
+    dropCity: String
+    driver_name: String
+    status: String
+    trip_cost: String
+    discount: String
+    payment_status: String
+    comment: String
+  ): Booking
+
+  deleteBooking(id: ID!): Booking
 }
 
 type Link {
@@ -48,6 +86,32 @@ type User {
   links: [Link!]!
 }
 
+type Booking {
+  id: ID!
+  tripdate: String
+  trip_start_time: String
+  trip_end_time: String
+  customer_name: String
+  carType: String
+  vehicle_number: String
+  driver_number: String
+  passenger_number: String
+  kilometer_number: String
+  hour_number: String
+  day_number: String
+  pickupAddress: String
+  pickupCity: String
+  dropAddress: String
+  dropCity: String
+  driver_name: String
+  status: String
+  trip_cost: String
+  discount: String
+  payment_status: String
+  createdAt: DateTime!
+  comment: String
+}
+
 # newLink: Recevoir des mises à jour en temps réel lorsqu'un nouveau lien est créé
 # newVote: Recevoir des mises à jour en temps réel lorsqu'un vote a été soumis
 type Subscription {
@@ -62,6 +126,15 @@ type Vote {
 }
 
 enum LinkOrderByInput {
+  description_ASC
+  description_DESC
+  url_ASC
+  url_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+enum BookingOrderByInput {
   description_ASC
   description_DESC
   url_ASC

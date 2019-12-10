@@ -21,3 +21,29 @@ type Vote {
   link: Link!
   user: User!
 }
+
+type Booking {
+  id: ID! @id
+  tripdate: String
+  trip_start_time: String
+  trip_end_time: String
+  customer_name: String
+  carType: String
+  vehicle_number: String
+  driver_number: String
+  passenger_number: String
+  kilometer_number: String
+  hour_number: String
+  day_number: String
+  pickupAddress: String
+  pickupCity: String
+  dropAddress: String
+  dropCity: String
+  driver_name: String
+  status: String
+  trip_cost: String
+  discount: String
+  payment_status: String
+  createdAt: DateTime! @createdAt
+  comment: String
+}
